@@ -5,5 +5,7 @@ EXTENSIONS:
 
     - COLORZILLA : https://chromewebstore.google.com/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp?hl=en
 
+    - Path Intellisense (file name suggestion)  https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense
+
 
 
