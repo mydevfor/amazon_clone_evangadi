@@ -41,9 +41,15 @@ const Header = () => {
           <div className={styles.search}>
             <select name="" id="">
               <option value="">All</option>
+              <option value="">Art and crafts</option>
+              <option value="">Automotive</option>
+              <option value="">Books</option>
+              <option value="">Electronics</option>
+              <option value="">Software</option>
+              <option value="">Baby</option>
             </select>
             <input type="text" />
-            <BsSearch size={23} />
+            <BsSearch size={42} />
           </div>
           {/* other section */}
           <div className={styles.order__container}>

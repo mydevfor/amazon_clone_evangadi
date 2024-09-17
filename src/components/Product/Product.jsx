@@ -11,6 +11,7 @@ function Product() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(`${FakeStoreAPI_BaseURL}/products`)
       .then((res) => {
