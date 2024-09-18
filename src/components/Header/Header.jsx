@@ -7,16 +7,16 @@ import { BsSearch } from "react-icons/bs";
 import amazone_letter_logo from "../../assets/images/logo/amazon_letter_white_logo.png";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
-// import { DataContext } from "../DataProvider/DataProvider";
+import { DataContext } from "../DataProvider/DataProvider";
 // import { auth } from "../../Utility/firebase";
 
 const Header = () => {
   let user = "fantahun";
-  let totalItem = 0;
-  // const [{ user, basket }, dispatch] = useContext(DataContext);
-  // const totalItem = basket?.reduce((amount, item) => {
-  //   return item.amount + amount;
-  // }, 0);
+  // let totalItem = 0;
+  const [{ basket }] = useContext(DataContext);
+  const totalItem = basket?.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
 
   return (
     <section className={styles.fixed}>
