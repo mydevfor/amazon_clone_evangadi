@@ -29,6 +29,7 @@ console.log(state)
 
   return (
     <div
+
       className={`${styles.card__container} ${
         flex ? styles.product__flexed : ""
       }`}
