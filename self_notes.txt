@@ -7,5 +7,7 @@ EXTENSIONS:
 
     - Path Intellisense (file name suggestion)  https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense
 
+    - Console Ninja   https://marketplace.visualstudio.com/items?itemName=WallabyJs.console-ninja
+
 
 
