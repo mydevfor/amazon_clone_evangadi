@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 
-import amazone_letter_logo from "../../assets/images/logo/amazon_letter_white_logo.png";
+import amazon_letter_logo from "../../assets/images/logo/amazon_letter_white_logo.png";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
@@ -25,7 +25,7 @@ const Header = () => {
           {/* logo section */}
           <div className={styles.logo__container}>
             <Link to="/">
-              <img src={amazone_letter_logo} alt="amazon logo" />
+              <img src={amazon_letter_logo} alt="amazon logo" />
             </Link>
             <div className={styles.delivery}>
               <span>
@@ -63,8 +63,8 @@ const Header = () => {
                 <option value="">EN</option>
               </select>
             </Link>
-            {/* <Link to={!user && "/auth"}> */}
-            <Link to={!user && "/auth/signOut"}>
+            <Link to={!user && "/auth"}>
+            {/* <Link to={!user && "/auth/signIn"}> */}
               <div>
                 {user ? (
                   <>
