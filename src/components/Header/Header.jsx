@@ -8,12 +8,12 @@ import amazon_letter_logo from "../../assets/images/logo/amazon_letter_white_log
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
-// import { auth } from "../../Utility/firebase";
+import { auth } from "../../Utility/firebase";
 
 const Header = () => {
-  let user = "fantahun";
   // let totalItem = 0;
-  const [{ basket }] = useContext(DataContext);
+  const [{ user, basket }] = useContext(DataContext);
+
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
@@ -64,7 +64,7 @@ const Header = () => {
               </select>
             </Link>
             <Link to={!user && "/auth"}>
-            {/* <Link to={!user && "/auth/signIn"}> */}
+              {/* <Link to={!user && "/auth/signIn"}> */}
               <div>
                 {user ? (
                   <>
