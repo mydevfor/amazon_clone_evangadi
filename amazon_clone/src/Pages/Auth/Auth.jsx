@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import amazon_letter_logo from "../../assets/images/logo/amazon_letter_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
-import Loader from "../../components/Loader/Loder";
 import { auth } from "../../Utility/firebase";
 
 import {

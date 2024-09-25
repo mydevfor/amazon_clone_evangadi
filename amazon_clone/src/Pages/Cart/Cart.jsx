@@ -5,13 +5,13 @@ import { initialState, reducer } from "../../Utility/reducer";
 import { Type } from "../../Utility/action.type";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 
-import styles from './cart.module.css'
+import styles from "./cart.module.css";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/Product/ProductCard";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 function Cart() {
-  const [{ basket }, dispatch] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
 
   const total = basket.reduce((amount, item) => {
     return item.price * item.amount + amount;
@@ -34,17 +34,35 @@ function Cart() {
     <Layout>
       <section className={styles.container}>
         <div className={styles.cart__container}>
-          <h2>Hello</h2>
-          <h3>Your shopping basket </h3>
-          <hr />
+          <div style={{ display: "flex", alignItems:"center", justifyContent: "space-between"}}>
+            <div>
+              <h2>Hello {user?.email?.split("@")[0]}</h2>
+              <h3>Your shopping basket </h3>
+            </div>
+            {/* TODO: add a clear all cart items functionality - Done */}
+            <div>
+              {basket.length !== 0 ? (
+                <button
+                  style={{padding: "5px" , color:"red",cursor:"Pointer"}}
+                  onClick={() => dispatch({ type: Type.EMPTY_BASKET })}
+                >
+                  Clear All Items
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
 
+          <hr />
           {
-          basket?.length == 0 ? (
-            <p>Opps ! No item in your cart</p> ) : 
-            (
-            basket?.map((item, i) => (
-              
-                <section className={styles.cart_product}>
+            // TODO: add clear all cart items functionality
+
+            basket?.length == 0 ? (
+              <p>Oops ! No item in your cart</p>
+            ) : (
+              basket?.map((item, i) => (
+                <section className={styles.cart_product} key={i}>
                   <ProductCard
                     key={i}
                     product={item}
@@ -68,10 +86,9 @@ function Cart() {
                     </button>
                   </div>
                 </section>
-
-          )
-        ))
-        }
+              ))
+            )
+          }
         </div>
 
         {basket?.length !== 0 && (
@@ -81,8 +98,10 @@ function Cart() {
               <CurrencyFormat amount={total} />
             </div>
             <span>
-              <input type="checkbox" />
-              <small>This order contains a gift</small>
+              <input type="checkbox" id="giftCheckBox" />
+              <label htmlFor="giftCheckBox">
+                <small>This order contains a gift</small>t
+              </label>
             </span>
             <Link to="/payments">Continue to checkout</Link>
           </div>
