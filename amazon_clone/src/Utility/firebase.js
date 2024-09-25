@@ -1,16 +1,11 @@
-// Import the functions you need from the SDKs you need
+// we're importing the core Firebase library, as well as the
+// functions for authentication and the Firestore database
 import firebase from "firebase/compat/app";
-//imported for authentication
 import { getAuth } from "firebase/auth";
-//below two imports are for firebased db   firestore
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration for the Firebase project you created in the Firebase console
 const firebaseConfig = {
   apiKey: "AIzaSyAplIgXip70vuP3xBtCrIIKqvGkJen2QI0",
   authDomain: "finto-56024.firebaseapp.com",
@@ -21,9 +16,12 @@ const firebaseConfig = {
   measurementId: "G-1KYH6XJ6TP",
 };
 
-// Initialize Firebase
+// Initialize the Firebase app. This creates a new instance of the Firebase app, which is the entry point for all  Firebase functionality
 const app = firebase.initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 
+// Get the authentication service for signing in and out of your app
 export const auth = getAuth(app);
+
+// Get the Firestore database for storing and retrieving data
 export const db = app.firestore();
+

@@ -61,7 +61,7 @@ function Payment() {
 
       console.log(paymentIntent);
 
-      // 3. after the confirmation --> order firestore database save, clear basket
+      // 3. after the confirmation --> order > firestore database save (make sure firstore db is enabeled in firebase project), clear basket
       await db
         .collection("users")
         .doc(user.uid)
