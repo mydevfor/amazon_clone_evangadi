@@ -12,6 +12,7 @@ import Product from "../components/Product/Product";
 //for stripe
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 
 //provide public key and load it to stirpe

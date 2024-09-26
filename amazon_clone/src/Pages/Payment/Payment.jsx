@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import {Type} from "../../Utility/action.type";
 // for stripe checkout
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+
 import { axiosInstance } from "../../API/axios";
 import { db } from "../../Utility/firebase";
 
@@ -27,8 +28,8 @@ function Payment() {
     return item.amount + amount;
   }, 0);
 
-  const total = basket.reduce((amount, item) => {
-    return item.price * item.amount + amount;
+  const total = basket.reduce((allocator, item) => {
+    return item.price * item.amount + allocator;
   }, 0);
 
   // controls card inputs while typing
