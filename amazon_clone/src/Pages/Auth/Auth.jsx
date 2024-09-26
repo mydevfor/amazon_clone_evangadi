@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import amazon_letter_logo from "../../assets/images/logo/amazon_letter_logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Auth.module.css";
 import { auth } from "../../Utility/firebase";
 
@@ -14,7 +14,6 @@ import { DataContext } from "../../Components/DataProvider/DataProvider";
 import { Type } from "../../Utility/action.type";
 import { IoWarningOutline } from "react-icons/io5";
 
-
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,11 +23,13 @@ function SignIn() {
     signUP: false,
   });
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const navigationStateData = useLocation();
+  console.log(navigationStateData);
 
   const [{ user }, dispatch] = useContext(DataContext);
 
-// console.log("user state: "+ JSON.stringify(user))
+  // console.log("user state: "+ JSON.stringify(user))
 
   const authHandler = async (e) => {
     e.preventDefault();
@@ -50,12 +51,11 @@ function SignIn() {
           });
 
           setLoading({ ...loading, signIn: false });
-          navigate("/")
-          // Navigate(navStateData?.state?.redirect || "/");
+          navigate(navigationStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           setError(err.message);
-          console.log(error)
+          console.log(error);
           setLoading({ ...loading, signIn: false });
         });
     } else {
@@ -68,11 +68,11 @@ function SignIn() {
             user: userInfo.user,
           });
           setLoading({ ...loading, signUP: false });
-          navigate(navStateData?.state?.redirect || "/");
+          navigate(navigationStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           setError(err.message);
-          console.log(error)
+          console.log(error);
           setLoading({ ...loading, signUP: false });
         });
     }
@@ -89,7 +89,16 @@ function SignIn() {
 
       <div className={styles.login__container}>
         <h1>Sign In</h1>
-
+        {
+          <>
+            {
+              
+            navigationStateData?.state?.msg && (
+              <small style={{color:"red", fontWeight:"bold"}} >{navigationStateData.state.msg}</small>
+            )}
+            <br />
+          </>
+        }
         <form action="">
           <div>
             <label htmlFor="email">Email</label>
@@ -136,22 +145,22 @@ function SignIn() {
           className={styles.login__registerButton}
         >
           {loading.signUP ? (
-              <ClipLoader color="#000" size={15}></ClipLoader>
-            ) : (
+            <ClipLoader color="#000" size={15}></ClipLoader>
+          ) : (
             "Create your Amazon Account"
           )}
         </button>
 
-      {/* for error message preview */}
-      {
-        error && <div className={styles.error_holder}>
- <div className={styles.error__icon}><IoWarningOutline size={25} /></div>
- <div >{error}</div>
-
-</div>
-      }     
-
- </div>
+        {/* for error message preview */}
+        {error && (
+          <div className={styles.error_holder}>
+            <div className={styles.error__icon}>
+              <IoWarningOutline size={25} />
+            </div>
+            <div>{error}</div>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

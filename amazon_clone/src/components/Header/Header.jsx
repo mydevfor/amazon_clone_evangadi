@@ -9,14 +9,23 @@ import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
 import { auth } from "../../Utility/firebase";
+import { Type } from "../../Utility/action.type";
 
 const Header = () => {
 
-  const [{ user, basket }] = useContext(DataContext);
+  const [{ user, basket },dispatch] = useContext(DataContext);
 
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
+
+  //handle sign out and clear cart at the same time when the user clicks signout button
+  const handleSignOutAndClearCart = () => {
+    if (user) {
+      dispatch({ type: Type.EMPTY_BASKET });// to clear the cart
+      auth.signOut(); // Sign the user out
+    }
+};
 
   return (
     <section className={styles.fixed}>
@@ -69,7 +78,7 @@ const Header = () => {
                 {user ? (
                   <>
                     <p>Hello {user?.email?.split("@")[0]}</p>
-                    <span onClick={() => (user ? auth.signOut() : null)}>
+                    <span onClick={handleSignOutAndClearCart}>
                       Sign Out
                     </span>
                   </>

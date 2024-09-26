@@ -14,6 +14,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 //provide public key and load it to stirpe
 const stripePromise = loadStripe(
@@ -27,17 +28,34 @@ function AppRouter() {
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<Auth />} />
 
-          <Route
-            path="/payments"
-            element={
-              // wrap payment component by Element from stripe and provide stripe prop with a value of stripePromise 
+        <Route
+          path="/payments"
+          element={
+            // wrap payment component by Element from stripe and provide stripe prop with a value of stripePromise and hold that in protectedRoute
+            <ProtectedRoute
+              msg={
+                "Please sign in to complete your payment. (You'll be redirected to the checkout page)"
+              }
+              redirect={"/payments"}
+            >
               <Elements stripe={stripePromise}>
                 <Payment />
               </Elements>
-            }
-          />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/orders" element={<Orders />} />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute
+              msg={"Please sign in to access your orders"}
+              redirect={"/orders"}
+            >
+              <Orders />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/cart" element={<Cart />} />
         <Route path="/category/:categoryName" element={<Results />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
