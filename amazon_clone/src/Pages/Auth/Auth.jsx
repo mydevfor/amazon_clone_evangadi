@@ -49,7 +49,7 @@ function SignIn() {
             type: Type.SET_USER,
             user: userInfo.user,
           });
-
+console.log(user);
           setLoading({ ...loading, signIn: false });
           navigate(navigationStateData?.state?.redirect || "/");
         })
