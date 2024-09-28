@@ -3,7 +3,7 @@ import Layout from '../../components/Layout/Layout'
 import classes from "./orders.module.css";
 import { db } from "../../Utility/firebase";
 import { DataContext } from "../../components/DataProvider/DataProvider";
-import ProductCard from "../../Components/Product/ProductCard";
+import ProductCard from "../../components/Product/ProductCard";
 import { BiLoader } from "react-icons/bi";
 
 function Orders() {
