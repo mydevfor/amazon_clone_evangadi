@@ -5,8 +5,9 @@ import { FakeStoreAPI_BaseURL } from "../../API/EndPoints";
 import styles from "./results.module.css";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Layout from "../../components/Layout/Layout";
-import ProductCard from "../../components/Product/ProductCard";
-import Loader from "../../Components/Loader/Loder";
+import ProductCard from "../../Components/Product/ProductCard";
+import Loader from "../../components/Loader/Loder";
+
 function Results() {
   const { categoryName } = useParams();
   const [results, setResults] = useState([]);
