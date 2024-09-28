@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import amazon_letter_logo from "../../assets/images/logo/amazon_letter_white_logo.png";
+import LowerHeader from './LowerHeader'
 import { BiCart } from "react-icons/bi";
-import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
 import { auth } from "../../Utility/firebase";
 import { Type } from "../../Utility/action.type";
