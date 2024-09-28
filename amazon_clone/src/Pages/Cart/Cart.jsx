@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import ProductCard from "../../components/Product/ProductCard";
 import { BsFillCartXFill } from "react-icons/bs";
-import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
+import CurrencyFormat from '../../Components/CurrencyFormat/CurrencyFormat';
 function Cart() {
   const [{ user, basket }, dispatch] = useContext(DataContext);
 
