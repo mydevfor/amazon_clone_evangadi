@@ -72,6 +72,23 @@
   display: flex;
   gap: 20px;
 }
+.clear_all_items_btn{
+  padding: 5px;
+  color:"black";
+    border-radius: 5px;
+      background: var(--primary-shade);
+      font-weight: 600;
+    border: 1.5px solid var(--primary-shade);
+}
+
+.clear_all_items_btn:hover{
+color: #ffffff;  
+background: var(--primary-shade);
+transition: all .5s;
+border: none; 
+cursor: pointer;
+}
+
 @media screen and (max-width: 968px) {
     .container {
       flex-direction: column;

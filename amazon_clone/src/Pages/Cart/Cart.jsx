@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import ProductCard from "../../Components/Product/ProductCard";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
+import { BsFillCartXFill } from "react-icons/bs";
 
 function Cart() {
   const [{ user, basket }, dispatch] = useContext(DataContext);
@@ -39,12 +40,13 @@ function Cart() {
               <h3>Your shopping basket </h3>
             </div>
             {/* TODO: add a clear all cart items functionality - Done */}
-            <div>
+            <div style={{marginRight:"10px"}}>
               {basket.length !== 0 ? (
                 <button
-                  style={{padding: "5px" , color:"red",cursor:"Pointer"}}
-                  onClick={() => dispatch({ type: Type.EMPTY_BASKET })}
-                >
+                style={{display:"flex",gap:"5px",padding:"7px"}}
+                className={styles.clear_all_items_btn}
+                onClick={() => dispatch({ type: Type.EMPTY_BASKET })}
+                ><BsFillCartXFill size={20}/>
                   Clear All Items
                 </button>
               ) : (

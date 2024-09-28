@@ -39,6 +39,7 @@
 .button:hover {
   background-color: var(--primary-shade);
 }
+
 .rating {
   display: flex;
   align-items: center;

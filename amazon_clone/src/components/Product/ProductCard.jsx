@@ -5,6 +5,7 @@ import styles from "./Product.module.css";
 import { Link } from "react-router-dom";
 import { Type } from "../../Utility/action.type";
 import { DataContext } from "../../components/DataProvider/DataProvider";
+import { BsFillCartXFill } from "react-icons/bs";
 
 function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem }) {
   const { image, title, id, rating, price, description } = product;
@@ -47,7 +48,7 @@ function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem }) 
           <small>{rating?.count}</small>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>
+        <div className={styles.price_border}>
             {/* price */}
             <CurrencyFormat amount={price} />
         
@@ -55,12 +56,16 @@ function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem }) 
         <div>
         {
           showRemoveItem && (
-            <button className={styles.button}
+            <button   
+           className={styles.button}
+            style={
+              {display:"flex", justifyContent:"center",alignItems:"center" ,gap:"7px",padding:"5px"}
+            }
+
               onClick={() => dispatch({ type: Type.REMOVE_ITEM_IMMEDIATELY, id })}
-              style={{backgroundColor: "red", color: "white",padding:"5px"}}
-            
-          >
-              remove from cart
+          ><BsFillCartXFill size={20}/>
+            Remove Item
+               
             </button>
           )
         }

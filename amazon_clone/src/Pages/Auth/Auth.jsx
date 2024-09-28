@@ -34,9 +34,9 @@ function SignIn() {
   const authHandler = async (e) => {
     e.preventDefault();
 
-    console.log(e);
-    console.log(e.target);
-    console.log(e.target.name);
+    // console.log(e);
+    // console.log(e.target);
+    // console.log(e.target.name);
 
     if (e.target.name.toLowerCase() == "signin") {
       // console.log("buttons match");

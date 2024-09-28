@@ -4,6 +4,7 @@ import classes from "./orders.module.css";
 import { db } from "../../Utility/firebase";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import ProductCard from "../../Components/Product/ProductCard";
+import { BiLoader } from "react-icons/bi";
 
 function Orders() {
   const [{ user }, dispatch] = useContext(DataContext);
