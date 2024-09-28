@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import amazon_letter_logo from "../../assets/images/logo/amazon_letter_white_logo.png";
-import LowerHeader from './LowerHeader'
 import { BiCart } from "react-icons/bi";
 import { DataContext } from "../DataProvider/DataProvider";
 import { auth } from "../../Utility/firebase";
 import { Type } from "../../Utility/action.type";
-
+import LowerHeader from './LowerHeader'
 const Header = () => {
 
   const [{ user, basket },dispatch] = useContext(DataContext);
@@ -100,7 +99,7 @@ const Header = () => {
           </div>
         </div>
       </section>
-      <LowerHeader />
+      <LowerHeader/>
     </section>
   );
 };
