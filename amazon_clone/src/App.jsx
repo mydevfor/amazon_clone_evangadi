@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import "./App.css";
 import AppRouter from "./routes/AppRouter";
-
-import { DataContext } from "./Components/DataProvider/DataProvider";
 import { Type } from "./Utility/action.type";
 import { auth } from "./Utility/firebase";
-import { json } from "react-router-dom";
+import { DataContext } from "./components/DataProvider/DataProvider";
 
 function App() {
   const [{ user }, dispatch] = useContext(DataContext);
