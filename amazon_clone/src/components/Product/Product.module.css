@@ -39,7 +39,9 @@
 .button:hover {
   background-color: var(--primary-shade);
 }
-
+.price_border{
+  border: 1px solid var(--primary-color);
+}
 .rating {
   display: flex;
   align-items: center;

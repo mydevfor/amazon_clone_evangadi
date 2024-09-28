@@ -5,6 +5,8 @@ import { db } from "../../Utility/firebase";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import ProductCard from "../../components/Product/ProductCard";
 import { BiLoader } from "react-icons/bi";
+import moment  from 'moment';
+
 
 function Orders() {
   const [{ user }, dispatch] = useContext(DataContext);
@@ -13,18 +15,19 @@ function Orders() {
   useEffect(() => {
     if (user) {
       db.collection("users")
-        .doc(user.uid)
-        .collection("orders")
-        .orderBy("created", "desc")
-        .onSnapshot((snapshot) => {
-          console.log(snapshot);
-          setOrders(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              data: doc.data(),
-            }))
-          );
-        });
+      .doc(user.uid)
+      .collection("orders")
+      .orderBy("created", "desc")
+      .onSnapshot((snapshot) => {
+        setOrders(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,            // Fetch the document ID correctly
+            created: doc.data().created,  // Fetch the 'created' field from the document's data
+            amount: doc.data().amount,    // Fetch the 'amount' field (as you are logging)
+            data: doc.data(),      // Optional: include the whole document's data
+          }))
+        );
+      });
     } else {
       setOrders([]);
     }
@@ -44,9 +47,14 @@ function Orders() {
               return (
                 <div key={i}>
                   <hr />
-                  <p>Order ID: {eachOrder?.id}</p>
+                  <div style={{display:"flex", flexWrap:"wrap",fontWeight:"500", borderBottom:"1px solid black"}}>
+                  <p>Order ID: <span style={{color:"var(--primary-shade)"}}>{eachOrder?.id}</span></p>
+                  <p>Total Amount: <span style={{color:"var(--primary-shade)"}}>${eachOrder?.amount.toLocaleString()}</span></p>
+                  <p>Purchased Date: <span style={{color:"var(--primary-shade)"}}>{moment(eachOrder?.created * 1000).format('dddd, MMM DD, YYYY h:mm A')}</span></p>
+                  </div>
+
                   {eachOrder?.data?.basket?.map((order) => (
-                    <ProductCard flex={true} product={order} key={order.id} />
+                    <ProductCard flex={true} product={order} itemAmount={order.amount} total={true} key={order.id} />
                   ))}
                 </div>
               );

@@ -29,7 +29,7 @@ function SignIn() {
 
   const [{ user }, dispatch] = useContext(DataContext);
 
-  console.log("user state: "+ JSON.stringify(user))
+  // console.log("user state: "+ JSON.stringify(user))
 
   const authHandler = async (e) => {
     e.preventDefault();

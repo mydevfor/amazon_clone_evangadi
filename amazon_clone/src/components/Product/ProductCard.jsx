@@ -7,7 +7,7 @@ import { Type } from "../../Utility/action.type";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import { BsFillCartXFill } from "react-icons/bs";
 
-function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem }) {
+function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem, itemAmount,total }) {
   const { image, title, id, rating, price, description } = product;
 
   const [state, dispatch] = useContext(DataContext);
@@ -47,12 +47,14 @@ function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem }) 
           {/*count  */}
           <small>{rating?.count}</small>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div className={styles.price_border}>
+        <div  style={{ display: "flex", justifyContent: "space-between", alignItems: "center",}}>
+        {/* <div className={styles.price_border}> */}
             {/* price */}
-            <CurrencyFormat amount={price} />
+            <CurrencyFormat amount={price}  /> 
+            {itemAmount && <p style={{fontWeight:"500",color:"var(--primary-color)"}}>Quantity: {itemAmount}</p>}
+           {total && <p style={{fontWeight:"500",color:"var(--primary-color)"}}>Total: ${price*itemAmount}</p>}
         
-        </div>
+        {/* </div> */}
         <div>
         {
           showRemoveItem && (
