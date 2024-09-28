@@ -3,12 +3,11 @@ import Layout from "../../components/Layout/Layout";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import { initialState, reducer } from "../../Utility/reducer";
 import { Type } from "../../Utility/action.type";
-import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
-
 import styles from "./cart.module.css";
 import { Link } from "react-router-dom";
-import ProductCard from "../../components/Product/ProductCard"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import ProductCard from "../../Components/Product/ProductCard";
+import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 
 function Cart() {
   const [{ user, basket }, dispatch] = useContext(DataContext);

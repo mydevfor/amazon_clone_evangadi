@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./ProductDetail.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { FakeStoreAPI_BaseURL } from "../../Api/endPoints";
-import Loader from "../../Components/Loader/Loder";
+import { FakeStoreAPI_BaseURL } from "../../API/EndPoints"
+
 import Layout from "../../components/Layout/Layout";
-import ProductCard from "../../components/Product/ProductCard";
+import Loader from "../../components/Loader/Loder";
+import ProductCard from "../../Components/Product/ProductCard";
 function ProductDetail() {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(false);
