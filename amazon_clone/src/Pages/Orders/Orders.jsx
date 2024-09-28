@@ -33,7 +33,7 @@ function Orders() {
     <Layout>
       <section className={classes.container}>
         <div className={classes.orders__container}>
-          <h2>Your Orders</h2>
+          <h2 style={{margin:"20px"}}>Your Orders</h2>
           {orders?.length == 0 && (
             <div style={{ padding: "20px" }}>you don't have orders yet.</div>
           )}
