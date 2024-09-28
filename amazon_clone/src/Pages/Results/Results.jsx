@@ -6,7 +6,7 @@ import styles from "./results.module.css";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Layout from "../../components/Layout/Layout";
 import Loader from "../../components/Loader/Loder";
-import ProductCard from "../../Components/Product/ProductCard";
+import ProductCard from "../../components/Product/ProductCard";
 function Results() {
   const { categoryName } = useParams();
   const [results, setResults] = useState([]);
