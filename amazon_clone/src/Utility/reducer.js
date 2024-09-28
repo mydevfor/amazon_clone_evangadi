@@ -48,6 +48,17 @@ export const reducer = (state, action) => {
         ...state,
         basket: newBasket,
       };
+
+          case Type.REMOVE_ITEM_IMMEDIATELY:
+            const itemIndex = state.basket.findIndex((item) => item.id === action.id);
+            if (itemIndex >= 0) {
+              state.basket.splice(itemIndex, 1);
+            }            return {
+              ...state,
+              basket: state.basket,
+            };
+           
+
     case Type.EMPTY_BASKET:
       return {
         ...state,

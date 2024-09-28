@@ -25,44 +25,44 @@ function SignIn() {
 
   const navigate = useNavigate();
   const navigationStateData = useLocation();
-  console.log(navigationStateData);
+  // console.log(navigationStateData);
 
   const [{ user }, dispatch] = useContext(DataContext);
 
-  // console.log("user state: "+ JSON.stringify(user))
+  console.log("user state: "+ JSON.stringify(user))
 
   const authHandler = async (e) => {
     e.preventDefault();
 
-    // console.log(e);
-    // console.log(e.target);
-    // console.log(e.target.name);
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.name);
 
     if (e.target.name.toLowerCase() == "signin") {
-      console.log("buttons match");
+      // console.log("buttons match");
       // firebase auth
       setLoading({ ...loading, signIn: true });
       signInWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
-          console.log(userInfo);
+          // console.log(userInfo);
           dispatch({
             type: Type.SET_USER,
             user: userInfo.user,
           });
-console.log(user);
+// console.log(user);
           setLoading({ ...loading, signIn: false });
           navigate(navigationStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           setError(err.message);
-          console.log(error);
+          // console.log(error);
           setLoading({ ...loading, signIn: false });
         });
     } else {
       setLoading({ ...loading, signUP: true });
       createUserWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
-          console.log(userInfo);
+          // console.log(userInfo);
           dispatch({
             type: Type.SET_USER,
             user: userInfo.user,
@@ -72,7 +72,7 @@ console.log(user);
         })
         .catch((err) => {
           setError(err.message);
-          console.log(error);
+          // console.log(error);
           setLoading({ ...loading, signUP: false });
         });
     }

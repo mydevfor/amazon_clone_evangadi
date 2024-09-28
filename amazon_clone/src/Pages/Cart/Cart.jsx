@@ -56,8 +56,7 @@ function Cart() {
 
           <hr />
           {
-            // TODO: add clear all cart items functionality
-
+            
             basket?.length == 0 ? (
               <p>Oops ! No item in your cart</p>
             ) : (
@@ -69,7 +68,9 @@ function Cart() {
                     renderDesc={true}
                     renderAdd={false}
                     flex={true}
-                  />
+                    // TODO: include remove item from card functionality
+                    showRemoveItem={true}
+                    />
                   <div className={styles.btn_container}>
                     <button
                       className={styles.btn}

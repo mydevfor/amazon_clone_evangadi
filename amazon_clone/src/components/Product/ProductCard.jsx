@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../Utility/action.type";
 
-function ProductCard({ product, flex, renderDesc, renderAdd }) {
+function ProductCard({ product, flex, renderDesc, renderAdd , showRemoveItem }) {
   const { image, title, id, rating, price, description } = product;
 
   const [state, dispatch] = useContext(DataContext);
@@ -46,9 +46,25 @@ function ProductCard({ product, flex, renderDesc, renderAdd }) {
           {/*count  */}
           <small>{rating?.count}</small>
         </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
-          {/* price */}
-          <CurrencyFormat amount={price} />
+            {/* price */}
+            <CurrencyFormat amount={price} />
+        
+        </div>
+        <div>
+        {
+          showRemoveItem && (
+            <button className={styles.button}
+              onClick={() => dispatch({ type: Type.REMOVE_ITEM_IMMEDIATELY, id })}
+              style={{backgroundColor: "red", color: "white",padding:"5px"}}
+            
+          >
+              remove from cart
+            </button>
+          )
+        }
+        </div>
         </div>
         {renderAdd && (
           <button className={styles.button} onClick={addToCart}>

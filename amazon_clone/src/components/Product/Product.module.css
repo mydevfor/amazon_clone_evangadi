@@ -5,8 +5,11 @@
   color: black;
   text-decoration: none;
   position: relative;
-  /* display: flex;
-  align-items: flex-start; */
+  margin-top: 23px;
+   /* display: flex; */
+   /* justify-content: center !important;
+   align-items: center !important; */
+  /*align-items: flex-start; */
 
 }
 .card__container:hover .button {
