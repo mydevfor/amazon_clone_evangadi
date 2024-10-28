@@ -21,7 +21,9 @@ const stripePromise = loadStripe(
   import.meta.env.VITE_STRIPE_PUBLIC_KEY
 );
 
+
 function AppRouter() {
+
   return (
     <Router>
       <Routes>
