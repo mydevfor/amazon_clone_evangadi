@@ -18,7 +18,8 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 //provide public key and load it to stirpe
 const stripePromise = loadStripe(
-  import.meta.env.VITE_STRIPE_PUBLIC_KEY
+  // import.meta.env.VITE_STRIPE_PUBLIC_KEY
+  "pk_test_51QEzMUABML69ihbRUuKQyvaYLe0uLzmxGmr7lPXmbRaCL9bAUnpMIdyKh7lVTTcIzVM0DSuLIBOgBTAJrYiM38Qr00LzttLrVK"
 );
 
 
