@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -13,7 +14,7 @@ if (!stripeSec) {
 const stripe = require("stripe")(stripeSec);
 
 const app = express();
-app.use(cors({ origion: true }));
+app.use(cors());
 
 app.use(express.json());
 
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/payment/create", async (req, res) => {
+app.post("/payments/create", async (req, res) => {
   const total = req.query.total;
   if (total > 0) {
     const paymentIntent = await stripe.paymentIntents.create({

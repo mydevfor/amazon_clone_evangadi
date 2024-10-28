@@ -6,7 +6,7 @@ import { DataContext } from "../../components/DataProvider/DataProvider";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import {Type} from "../../Utility/action.type";
+import { Type } from "../../Utility/action.type";
 // for stripe checkout
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
@@ -14,7 +14,7 @@ import { axiosInstance } from "../../API/axios";
 import { db } from "../../Utility/firebase";
 
 function Payment() {
-  const [{ user, basket}, dispatch ] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
 
   const [cardError, setCardError] = useState(null);
   const [processing, setProcessing] = useState(false);
@@ -47,7 +47,7 @@ function Payment() {
       // 1. backend || functions ---> contact to the client secret
       const response = await axiosInstance({
         method: "POST",
-        url: `/payment/create?total=${total * 100}`, // coz stripe is expecting amounts deviding by 100;  when we send to stripe we *100 when we recive from it we /100
+        url: `/payments/create?total=${total * 100}`, // coz stripe is expecting amounts deviding by 100;  when we send to stripe we *100 when we recive from it we /100
       });
 
       console.log(response.data);

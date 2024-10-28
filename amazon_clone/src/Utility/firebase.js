@@ -7,13 +7,12 @@ import "firebase/compat/auth";
 
 // Your web app's Firebase configuration for the Firebase project you created in the Firebase console
 const firebaseConfig = {
-  apiKey: "AIzaSyAplIgXip70vuP3xBtCrIIKqvGkJen2QI0",
-  authDomain: "finto-56024.firebaseapp.com",
-  projectId: "finto-56024",
-  storageBucket: "finto-56024.appspot.com",
-  messagingSenderId: "499668546704",
-  appId: "1:499668546704:web:81d74e0a37e478fcb71415",
-  measurementId: "G-1KYH6XJ6TP",
+  apiKey: "AIzaSyCapLF9KrvchFwQ7gNGJasIEhNFEcCLsBs",
+  authDomain: "fir-e7fba.firebaseapp.com",
+  projectId: "fir-e7fba",
+  storageBucket: "fir-e7fba.appspot.com",
+  messagingSenderId: "936778720115",
+  appId: "1:936778720115:web:8110cfdcb4a6c730235b06"
 };
 
 // Initialize the Firebase app. This creates a new instance of the Firebase app, which is the entry point for all  Firebase functionality
